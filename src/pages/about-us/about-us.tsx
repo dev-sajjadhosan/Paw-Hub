@@ -8,6 +8,7 @@ import dogImg from "../../assets/dog.png";
 import catImg from "../../assets/cat.png";
 import birdImg from "../../assets/bird.png";
 import personImg from "../../assets/person-1.png";
+import { toast } from "sonner";
 
 export default function AboutUsPage() {
   const teamMembers = [
@@ -292,7 +293,7 @@ export default function AboutUsPage() {
               mission? We'd love to hear from you!
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Button className="gap-2">
+              <Button className="gap-2" onClick={() => toast.info("Developement mode.")}>
                 <Mail className="h-4 w-4" /> Contact Us
               </Button>
               <Button variant="outline" className="gap-2">
