@@ -20,7 +20,7 @@ import rabbitImage from "../../assets/rabbit.png";
 
 export default function LostAndFound() {
   const { LFPet, setLFPet } = useLocalStore();
-  const [petCategory, setPetCategory] = useState("dog");
+  const [_, setPetCategory] = useState("dog");
   return (
     <>
       <div className="flex flex-col p-7">

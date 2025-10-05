@@ -16,7 +16,6 @@ import TooltipBtn from "../custom_ui/tooltipBtn";
 import { useLocation } from "react-router";
 import { usePetStore } from "@/store/usePetStore";
 import ProfileDropdown from "./profile-dropdown";
-import { TbShoppingCart } from "react-icons/tb";
 import { useLocalStore } from "@/store/useLocalStore";
 import { Separator } from "../ui/separator";
 

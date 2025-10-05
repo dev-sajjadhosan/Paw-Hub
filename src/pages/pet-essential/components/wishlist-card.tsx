@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Share2, ShoppingCart, Trash2 } from "lucide-react";
 import img from "../../../assets/dog.png";
 
-export default function WishlistCard({ item }: { item: any }) {
+export default function WishlistCard({}: { item?: any }) {
   return (
     <>
       <Card className="w-fit">

@@ -1,7 +1,7 @@
 import ProfileDropdown from "@/components/custom/profile-dropdown";
 import GoBack from "@/components/custom_ui/goback";
 import { Button } from "@/components/ui/button";
-import { Image, ImagePlus, Loader, Youtube } from "lucide-react";
+import { Image, Loader, Youtube } from "lucide-react";
 
 import StoryFeedCard from "./components/story-feed";
 import StoryImageCard from "./components/story-img";

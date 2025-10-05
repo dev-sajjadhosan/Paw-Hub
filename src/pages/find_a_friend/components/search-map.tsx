@@ -8,13 +8,14 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
+import type { LatLngExpression } from "leaflet";
 import { Input } from "@/components/ui/input";
 import { MapPin, MapPinned } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import TooltipBtn from "@/components/custom_ui/tooltipBtn";
 
 export default function SearchMap() {
-  const [petLocation, setPetLocation] = useState<[number, number]>([
+  const [petLocation, setPetLocation] = useState<LatLngExpression>([
     40.785091, -73.968285,
   ]);
   const [query, setQuery] = useState("");
@@ -23,18 +24,25 @@ export default function SearchMap() {
   const handleSearch = async () => {
     if (!query) return;
     setLoading(true);
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        query
-      )}`
-    );
-    const data = await res.json();
-    if (data && data.length > 0) {
-      const lat = parseFloat(data[0].lat);
-      const lon = parseFloat(data[0].lon);
-      setPetLocation([lat, lon]);
+
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+          query
+        )}`
+      );
+      const data = await res.json();
+      if (data && data.length > 0) {
+        const lat = parseFloat(data[0].lat);
+        const lon = parseFloat(data[0].lon);
+        setPetLocation([lat, lon]);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Location search failed");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleMyLocation = () => {
@@ -59,7 +67,7 @@ export default function SearchMap() {
     );
   };
 
-  // This component moves the map whenever petLocation changes
+  // Moves the map whenever petLocation changes
   function RecenterMap() {
     const map = useMap();
     useEffect(() => {
@@ -76,10 +84,7 @@ export default function SearchMap() {
   }
 
   return (
-    <div
-      className="p-5 w-full border rounded-lg relative"
-      style={{ height: "400px" }}
-    >
+    <div className="p-5 w-full border rounded-lg relative" style={{ height: "400px" }}>
       {/* Search Input */}
       <div className="absolute bottom-4 left-4 z-[1000] pointer-events-auto">
         <div className="flex items-center gap-1 bg-primary-foreground px-5 py-1 w-md rounded-md">
@@ -97,7 +102,7 @@ export default function SearchMap() {
             icon={MapPinned}
             align="start"
             side="left"
-            action={handleMyLocation} // call the function when clicked
+            action={handleMyLocation}
           />
         </div>
       </div>
@@ -122,7 +127,7 @@ export default function SearchMap() {
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker
           position={petLocation}
-          draggable
+          draggable={true}
           eventHandlers={{
             dragend: (e) => {
               const marker = e.target;

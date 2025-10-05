@@ -6,9 +6,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FileText, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import dog from "../../../assets/dog.png";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import ShowMapLocation from "./showmaplocation";
 import FoundReport from "./foundreport";

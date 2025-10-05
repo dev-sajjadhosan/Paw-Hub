@@ -3,8 +3,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useLocalStore } from "@/store/useLocalStore";
 import { ArrowDownToDot, Trash2 } from "lucide-react";
 import WishlistCard from "./wishlist-card";
-import { Card, CardContent } from "@/components/ui/card";
-import { TbDatabasePlus } from "react-icons/tb";
 import EmptyCard from "@/components/custom/empty-card";
 
 export default function PetWishlist() {

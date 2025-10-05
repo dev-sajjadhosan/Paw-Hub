@@ -91,10 +91,6 @@ export default function FoundReport() {
                 className="resize-none border-0"
               />
             </div>
-
-            {/* Found Location */}
-
-            {/* Submit Button */}
             <Button className="w-full mt-2">Submit Report</Button>
           </div>
         </div>

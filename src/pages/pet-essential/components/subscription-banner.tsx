@@ -15,7 +15,7 @@ export default function SubscriptionBanner() {
           <>
             <div className="flex items-center gap-2 bg-secondary py-3 px-7 rounded-md">
               <Avatar className="w-11 h-11 border p-1.5">
-                {/* <AvatarImage src="logo.png" /> */}
+                <AvatarImage src="logo.png" />
                 <AvatarFallback>MS</AvatarFallback>
               </Avatar>
               <div className="flex flex-col items-start">
