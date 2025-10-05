@@ -8,14 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Upload, MapPin, Trash2, Bone } from "lucide-react";
 import TooltipBtn from "@/components/custom_ui/tooltipBtn";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+// import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import SearchMap from "../components/search-map";
 
 export default function LostPetPage() {
   const [photo, setPhoto] = useState<File | null>(null);
-  const [petLocation, setPetLocation] = useState<[number, number]>([
-    40.785091, -73.968285,
-  ]);
+  // const [petLocation, setPetLocation] = useState<[number, number]>([
+  //   40.785091, -73.968285,
+  // ]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

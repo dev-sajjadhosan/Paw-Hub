@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
-import { Heart, Loader, Plus } from "lucide-react";
+import { Heart, Loader } from "lucide-react";
 import MoreOptionDropdown from "./shared/more-options";
 import { useLocalStore } from "@/store/useLocalStore";
 import TooltipBtn from "@/components/custom_ui/tooltipBtn";
