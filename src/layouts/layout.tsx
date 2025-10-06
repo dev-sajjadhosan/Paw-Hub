@@ -9,7 +9,10 @@ import LostAndFound from "@/pages/lostAndFound/lostAndFound";
 import AddToCartDrawer from "@/pages/pet-essential/components/add-to-cart-drawer";
 import PetWishlist from "@/pages/pet-essential/components/pet-wishlist";
 import PetEssentialPage from "@/pages/pet-essential/pet-essential";
+import CommentsDialog from "@/pages/pet-stories/components/comments-dialog";
+import ShareDialog from "@/pages/pet-stories/components/share-dialog";
 import PetStoriesPage from "@/pages/pet-stories/pet-stories";
+import PostViewPage from "@/pages/post-view/post-view";
 
 import { Route, Routes } from "react-router";
 
@@ -49,6 +52,11 @@ const routes = [
     path: "/about-us",
     element: <AboutUsPage />,
   },
+  //
+  {
+    path: "/post/:id",
+    element: <PostViewPage />,
+  },
 ];
 
 export default function Layout() {
@@ -57,6 +65,8 @@ export default function Layout() {
       <Header routes={routes} />
       <PetWishlist />
       <AddToCartDrawer />
+      <CommentsDialog />
+      <ShareDialog />
       <Routes>
         {routes.map((r, i) => (
           <Route key={i} path={r.path} element={r.element} />

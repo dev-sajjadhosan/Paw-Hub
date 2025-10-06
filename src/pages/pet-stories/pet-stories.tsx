@@ -6,8 +6,6 @@ import { Image, Loader, Youtube } from "lucide-react";
 import StoryFeedCard from "./components/story-feed";
 import StoryImageCard from "./components/story-img";
 import PetViewDialog from "./components/view-dialog";
-import CommentsDialog from "./components/comments-dialog";
-import ShareDialog from "./components/share-dialog";
 import { useLocalStore } from "@/store/useLocalStore";
 import CreatePostDialog from "./components/create-post-dialog";
 import CreateFeedDialog from "./components/create-feed-dialog";
@@ -48,8 +46,6 @@ export default function PetStoriesPage() {
   return (
     <>
       <PetViewDialog />
-      <CommentsDialog />
-      <ShareDialog />
       <CreatePostDialog />
       <CreateFeedDialog/>
       {/* ------------------- */}
