@@ -20,6 +20,7 @@ interface LocalStoreProps {
   petAddToCart: boolean;
   petWishlist: boolean;
   cartItems: CartItem[];
+  qrCode: boolean;
 
   setLFPet: (v: number) => void;
   setChatDialog: (v: boolean) => void;
@@ -30,7 +31,8 @@ interface LocalStoreProps {
   setPetCreateFeed: (v: boolean) => void;
   setPetAddToCart: (v: boolean) => void;
   setPetWishlist: (v: boolean) => void;
-  
+  setQrCode: (v: boolean) => void;
+
   // Cart functions
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
@@ -51,6 +53,7 @@ export const useLocalStore = create<LocalStoreProps>()(
       petAddToCart: false,
       petWishlist: false,
       cartItems: [],
+      qrCode: false,
 
       setLFPet: (v: number) => set(() => ({ LFPet: v })),
       setChatDialog: (v: boolean) => set(() => ({ chatDialog: v })),
@@ -61,12 +64,15 @@ export const useLocalStore = create<LocalStoreProps>()(
       setPetCreateFeed: (v: boolean) => set(() => ({ petCreateFeed: v })),
       setPetAddToCart: (v: boolean) => set(() => ({ petAddToCart: v })),
       setPetWishlist: (v: boolean) => set(() => ({ petWishlist: v })),
-      
+      setQrCode: (v: boolean) => set(() => ({ qrCode: v })),
+
       // Cart functions
-      addToCart: (item: CartItem) => 
+      addToCart: (item: CartItem) =>
         set((state) => {
-          const existingItem = state.cartItems.find((cartItem) => cartItem.id === item.id);
-          
+          const existingItem = state.cartItems.find(
+            (cartItem) => cartItem.id === item.id
+          );
+
           if (existingItem) {
             // If item already exists, increase quantity
             return {
@@ -83,19 +89,19 @@ export const useLocalStore = create<LocalStoreProps>()(
             };
           }
         }),
-      
+
       removeFromCart: (id: number) =>
         set((state) => ({
           cartItems: state.cartItems.filter((item) => item.id !== id),
         })),
-      
+
       updateCartItemQuantity: (id: number, quantity: number) =>
         set((state) => ({
           cartItems: state.cartItems.map((item) =>
             item.id === id ? { ...item, quantity } : item
           ),
         })),
-      
+
       clearCart: () => set(() => ({ cartItems: [] })),
     }),
     {
