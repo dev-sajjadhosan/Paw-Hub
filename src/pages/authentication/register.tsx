@@ -1,8 +1,131 @@
+import { Separator } from "@/components/ui/separator";
+import register from "../../assets/register.svg";
+import {
+  AtSign,
+  Eye,
+  EyeOff,
+  QrCode,
+  User,
+  UserLock,
+  UserPlus,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import TooltipBtn from "@/components/custom_ui/tooltipBtn";
+import { useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { useLocalStore } from "@/store/useLocalStore";
+import { Card, CardContent } from "@/components/ui/card";
+
+import qrCodeImg from "../../assets/qrCode.png";
+import Socials from "./components/socials";
+import { Link } from "react-router";
+
 export default function RegisterPage() {
+  const [show, setShow] = useState(false);
+  const { qrCode, setQrCode } = useLocalStore();
   return (
     <>
       <div className="p-7 flex items-center justify-center h-screen">
-        <h3 className="text-2xl">Register Page</h3>
+        <div className="p-9 w-10/12 h-11/12 bg-neutral-900 rounded-2xl flex items-center gap-14">
+          <div className="flex flex-col items-center gap-5">
+            <img src={register} alt="" className="w-full md:w-2xl" />
+            <img src="logo2.png" alt="" width={200} />
+            <Button
+              onClick={() => setQrCode(!qrCode)}
+              variant={qrCode ? "default" : "secondary"}
+            >
+              <QrCode />
+              Register with QR Code
+            </Button>
+            <p className="flex items-center gap-3 text-xs">
+              already have an account ?{" "}
+              <a
+                href="login"
+                className="text-muted-foreground cursor-pointer hover:text-orange-600"
+              >
+                Login
+              </a>
+            </p>
+          </div>
+          <Separator orientation="vertical" />
+          <div className="flex flex-col w-full duration-200">
+            {qrCode ? (
+              <>
+                <Card className="mt-3 p-0 mx-auto">
+                  <CardContent className="p-1.5">
+                    <img
+                      src={qrCodeImg}
+                      alt=""
+                      width={290}
+                      className="object-contain mx-auto"
+                    />
+                  </CardContent>
+                </Card>
+                <p className="text-xs text-center capitalize mx-auto mt-3 text-muted-foreground">
+                  scan the qr-code and register instantly
+                </p>
+              </>
+            ) : (
+              <>
+                <h3 className="text-2xl font-normal">Welome to,</h3>
+                <form className="mt-5 w-full space-y-3">
+                  <div className="flex items-center gap-2 bg-secondary w-full rounded-md px-5 py-0.5">
+                    <User size={20} />
+                    <Separator orientation="vertical" className="h-5!" />
+                    <Input
+                      placeholder="Write your name"
+                      className="bg-transparent! border-0"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary w-full rounded-md px-5 py-0.5">
+                    <AtSign size={20} />
+                    <Separator orientation="vertical" className="h-5!" />
+                    <Input
+                      type="email"
+                      placeholder="Write your email"
+                      className="bg-transparent! border-0"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary w-full rounded-md px-5 py-0.5">
+                    <UserLock size={20} />
+                    <Separator orientation="vertical" className="h-5!" />
+                    <Input
+                      placeholder="Write your password"
+                      className="bg-transparent! border-0"
+                      type={show ? "text" : "password"}
+                    />
+                    <div className="flex items-center">
+                      <TooltipBtn
+                        icon={show ? EyeOff : Eye}
+                        label={show ? "Hide" : "Show"}
+                        action={() => setShow(!show)}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between w-full mt-3">
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="me" />
+                      <Label htmlFor="me">
+                        accept all terms and conditions
+                      </Label>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <Link to={"/register/setup-profile"}>
+                      <Button type="button">
+                        Create
+                        <UserPlus />
+                      </Button>
+                    </Link>
+                  </div>
+                </form>
+                <Socials label="register with" />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

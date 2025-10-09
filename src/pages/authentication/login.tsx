@@ -13,6 +13,7 @@ import { useLocalStore } from "@/store/useLocalStore";
 import { Card, CardContent } from "@/components/ui/card";
 
 import qrCodeImg from "../../assets/qrCode.png";
+import Socials from "./components/socials";
 
 export default function LoginPage() {
   const [show, setShow] = useState(false);
@@ -31,6 +32,12 @@ export default function LoginPage() {
               <QrCode />
               Login with QR Code
             </Button>
+            <p className="flex items-center gap-3 text-xs">
+              don't have an account ?{" "}
+              <a href="register" className="text-muted-foreground cursor-pointer hover:text-orange-600">
+                Register
+              </a>
+            </p>
           </div>
           <Separator orientation="vertical" />
           <div className="flex flex-col w-full duration-200">
@@ -92,19 +99,7 @@ export default function LoginPage() {
                     </Button>
                   </div>
                 </form>
-                <div className="flex flex-col gap-1 items-center justify-start mt-7">
-                  {/* separetor */}
-                  <div className="flex items-center gap-3 justify-center">
-                    <Button variant={"secondary"}>
-                      <TbBrandGoogleFilled /> Google
-                    </Button>
-                    <Button variant={"secondary"}>
-                      <TbBrandMeta />
-                      Facebook
-                    </Button>
-                    <Button>Others</Button>
-                  </div>
-                </div>
+                <Socials label="login with" />
               </>
             )}
           </div>

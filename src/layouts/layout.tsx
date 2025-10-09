@@ -4,6 +4,7 @@ import AboutUsPage from "@/pages/about-us/about-us";
 import AskAVetPage from "@/pages/ask-a-vet/ask-a-vet";
 import LoginPage from "@/pages/authentication/login";
 import RegisterPage from "@/pages/authentication/register";
+import SetupProfilePage from "@/pages/authentication/setup-profile";
 import FindAFriend from "@/pages/find_a_friend/find_a_friend";
 import LostPetPage from "@/pages/find_a_friend/pages/lostpetpage";
 import Home from "@/pages/home/home";
@@ -67,6 +68,10 @@ const routes = [
   {
     path: "register",
     element: <RegisterPage />,
+  },
+  {
+    path: "register/setup-profile",
+    element: <SetupProfilePage />,
   },
 ];
 
