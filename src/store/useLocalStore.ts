@@ -9,6 +9,8 @@ export interface CartItem {
   image: string;
 }
 
+export type SETUPTAB = "user" | "pet" | string;
+
 interface LocalStoreProps {
   LFPet: number;
   chatDialog: boolean;
@@ -21,6 +23,7 @@ interface LocalStoreProps {
   petWishlist: boolean;
   cartItems: CartItem[];
   qrCode: boolean;
+  setupTab: SETUPTAB;
 
   setLFPet: (v: number) => void;
   setChatDialog: (v: boolean) => void;
@@ -32,6 +35,7 @@ interface LocalStoreProps {
   setPetAddToCart: (v: boolean) => void;
   setPetWishlist: (v: boolean) => void;
   setQrCode: (v: boolean) => void;
+  setSetupTab: (v: SETUPTAB | string) => void;
 
   // Cart functions
   addToCart: (item: CartItem) => void;
@@ -54,6 +58,7 @@ export const useLocalStore = create<LocalStoreProps>()(
       petWishlist: false,
       cartItems: [],
       qrCode: false,
+      setupTab: "user",
 
       setLFPet: (v: number) => set(() => ({ LFPet: v })),
       setChatDialog: (v: boolean) => set(() => ({ chatDialog: v })),
@@ -65,6 +70,7 @@ export const useLocalStore = create<LocalStoreProps>()(
       setPetAddToCart: (v: boolean) => set(() => ({ petAddToCart: v })),
       setPetWishlist: (v: boolean) => set(() => ({ petWishlist: v })),
       setQrCode: (v: boolean) => set(() => ({ qrCode: v })),
+      setSetupTab: (v: SETUPTAB) => set(() => ({ setupTab: v })),
 
       // Cart functions
       addToCart: (item: CartItem) =>

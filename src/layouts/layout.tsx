@@ -6,6 +6,7 @@ import LoginPage from "@/pages/authentication/login";
 import RegisterPage from "@/pages/authentication/register";
 import SetupProfilePage from "@/pages/authentication/setup-profile";
 import FindAFriend from "@/pages/find_a_friend/find_a_friend";
+import LearnMorePage from "@/pages/find_a_friend/pages/learn-more-page";
 import LostPetPage from "@/pages/find_a_friend/pages/lostpetpage";
 import Home from "@/pages/home/home";
 import LostAndFound from "@/pages/lostAndFound/lostAndFound";
@@ -35,6 +36,10 @@ const routes = [
   {
     path: "/lost-pet",
     element: <LostPetPage />,
+  },
+  {
+    path: "/learn-more-about/:id",
+    element: <LearnMorePage />,
   },
   //
   {

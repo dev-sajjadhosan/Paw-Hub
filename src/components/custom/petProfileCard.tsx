@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, PawPrint, Share2 } from "lucide-react";
 import TooltipBtn from "../custom_ui/tooltipBtn";
+import AdoptNowDialog from "@/pages/find_a_friend/components/adopt-now-dialog";
+import { Link } from "react-router";
 
 export default function PetProfileCard() {
   return (
@@ -64,10 +66,12 @@ export default function PetProfileCard() {
 
         {/* Call to Action */}
         <div className="flex gap-3">
-          <Button className="flex-1">Adopt Now</Button>
-          <Button variant="outline" className="flex-1">
-            Learn More
-          </Button>
+          <AdoptNowDialog />
+          <Link to={`/learn-more-about/${"pubby"}`}>
+            <Button variant="outline" className="flex-1">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
